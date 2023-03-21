@@ -43,6 +43,8 @@
 		2F19A92629C85AD100CFC0EA /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F19A92529C85AD100CFC0EA /* FavoritePresenter.swift */; };
 		2F19A92829C85ADE00CFC0EA /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F19A92729C85ADE00CFC0EA /* FavoriteView.swift */; };
 		2F19A92A29C85B2E00CFC0EA /* FavoriteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F19A92929C85B2E00CFC0EA /* FavoriteInteractor.swift */; };
+		2F19A93129C9639D00CFC0EA /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 2F19A93029C9639D00CFC0EA /* Nimble */; };
+		2F19A93429C9648700CFC0EA /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 2F19A93329C9648700CFC0EA /* Quick */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F19A93429C9648700CFC0EA /* Quick in Frameworks */,
+				2F19A93129C9639D00CFC0EA /* Nimble in Frameworks */,
 				2F19A90C29C8259A00CFC0EA /* RealmSwift in Frameworks */,
 				2F19A90F29C825A900CFC0EA /* CachedAsyncImage in Frameworks */,
 				2F19A90A29C8259A00CFC0EA /* Realm in Frameworks */,
@@ -455,6 +459,8 @@
 				2F19A90929C8259A00CFC0EA /* Realm */,
 				2F19A90B29C8259A00CFC0EA /* RealmSwift */,
 				2F19A90E29C825A900CFC0EA /* CachedAsyncImage */,
+				2F19A93029C9639D00CFC0EA /* Nimble */,
+				2F19A93329C9648700CFC0EA /* Quick */,
 			);
 			productName = gamingsimpleclean;
 			productReference = 2F19A89B29C8222300CFC0EA /* gamingsimpleclean.app */;
@@ -532,6 +538,8 @@
 				2F19A90529C8254600CFC0EA /* XCRemoteSwiftPackageReference "Alamofire" */,
 				2F19A90829C8259A00CFC0EA /* XCRemoteSwiftPackageReference "realm-swift" */,
 				2F19A90D29C825A900CFC0EA /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+				2F19A92F29C9639D00CFC0EA /* XCRemoteSwiftPackageReference "Nimble" */,
+				2F19A93229C9648700CFC0EA /* XCRemoteSwiftPackageReference "Quick" */,
 			);
 			productRefGroup = 2F19A89C29C8222300CFC0EA /* Products */;
 			projectDirPath = "";
@@ -952,6 +960,22 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		2F19A92F29C9639D00CFC0EA /* XCRemoteSwiftPackageReference "Nimble" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Nimble.git";
+			requirement = {
+				kind = exactVersion;
+				version = 11.2.1;
+			};
+		};
+		2F19A93229C9648700CFC0EA /* XCRemoteSwiftPackageReference "Quick" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Quick.git";
+			requirement = {
+				kind = exactVersion;
+				version = 6.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -974,6 +998,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2F19A90D29C825A900CFC0EA /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
 			productName = CachedAsyncImage;
+		};
+		2F19A93029C9639D00CFC0EA /* Nimble */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F19A92F29C9639D00CFC0EA /* XCRemoteSwiftPackageReference "Nimble" */;
+			productName = Nimble;
+		};
+		2F19A93329C9648700CFC0EA /* Quick */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F19A93229C9648700CFC0EA /* XCRemoteSwiftPackageReference "Quick" */;
+			productName = Quick;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
