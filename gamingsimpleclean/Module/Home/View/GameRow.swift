@@ -57,15 +57,6 @@ struct GameRow: View {
                 
             }
         }
-        
-//        VStack {
-//            imageGame
-//            content
-//        }
-//        .frame(height: 250)
-//        .padding([.leading, .trailing], 16)
-//        .background(Color.random.opacity(0.3))
-//        .cornerRadius(30)
     }
     
 }
@@ -85,10 +76,6 @@ extension GameRow {
             Text(game.name)
                 .font(.title)
                 .bold()
-            
-//            Text("\(game.rating)")
-//                .font(.system(size: 14))
-//                .lineLimit(2)
             HStack(spacing: 2) {
                 Image(systemName: "star.fill")
                     .resizable()
