@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import RGCore
+import RGHome
 
 @main
 struct gamingsimplecleanApp: App {
