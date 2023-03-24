@@ -43,8 +43,7 @@
 		2F19A92629C85AD100CFC0EA /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F19A92529C85AD100CFC0EA /* FavoritePresenter.swift */; };
 		2F19A92829C85ADE00CFC0EA /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F19A92729C85ADE00CFC0EA /* FavoriteView.swift */; };
 		2F19A92A29C85B2E00CFC0EA /* FavoriteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F19A92929C85B2E00CFC0EA /* FavoriteInteractor.swift */; };
-		2F19A93129C9639D00CFC0EA /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 2F19A93029C9639D00CFC0EA /* Nimble */; };
-		2F19A93429C9648700CFC0EA /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 2F19A93329C9648700CFC0EA /* Quick */; };
+		2F210E4929CD47EB004E0428 /* FavoriteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F210E4829CD47EB004E0428 /* FavoriteRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +99,7 @@
 		2F19A92529C85AD100CFC0EA /* FavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
 		2F19A92729C85ADE00CFC0EA /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		2F19A92929C85B2E00CFC0EA /* FavoriteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteInteractor.swift; sourceTree = "<group>"; };
+		2F210E4829CD47EB004E0428 /* FavoriteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +107,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F19A93429C9648700CFC0EA /* Quick in Frameworks */,
-				2F19A93129C9639D00CFC0EA /* Nimble in Frameworks */,
 				2F19A90C29C8259A00CFC0EA /* RealmSwift in Frameworks */,
 				2F19A90F29C825A900CFC0EA /* CachedAsyncImage in Frameworks */,
 				2F19A90A29C8259A00CFC0EA /* Realm in Frameworks */,
@@ -416,6 +414,7 @@
 		2F19A92229C8562100CFC0EA /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
+				2F210E4729CD47DF004E0428 /* Router */,
 				2F19A92429C85AC400CFC0EA /* Presenter */,
 				2F19A92329C8562900CFC0EA /* View */,
 			);
@@ -436,6 +435,14 @@
 				2F19A92529C85AD100CFC0EA /* FavoritePresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		2F210E4729CD47DF004E0428 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				2F210E4829CD47EB004E0428 /* FavoriteRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -459,8 +466,6 @@
 				2F19A90929C8259A00CFC0EA /* Realm */,
 				2F19A90B29C8259A00CFC0EA /* RealmSwift */,
 				2F19A90E29C825A900CFC0EA /* CachedAsyncImage */,
-				2F19A93029C9639D00CFC0EA /* Nimble */,
-				2F19A93329C9648700CFC0EA /* Quick */,
 			);
 			productName = gamingsimpleclean;
 			productReference = 2F19A89B29C8222300CFC0EA /* gamingsimpleclean.app */;
@@ -603,6 +608,7 @@
 				2F19A8FD29C8248800CFC0EA /* LocaleDataSource.swift in Sources */,
 				2F19A8FA29C8248800CFC0EA /* CustomeError+Ext.swift in Sources */,
 				2F19A92829C85ADE00CFC0EA /* FavoriteView.swift in Sources */,
+				2F210E4929CD47EB004E0428 /* FavoriteRouter.swift in Sources */,
 				2F19A8F729C8248800CFC0EA /* Injection.swift in Sources */,
 				2F19A91D29C840C700CFC0EA /* String.swift in Sources */,
 				2F19A8F529C8248800CFC0EA /* DetailPresenter.swift in Sources */,
@@ -998,16 +1004,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2F19A90D29C825A900CFC0EA /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
 			productName = CachedAsyncImage;
-		};
-		2F19A93029C9639D00CFC0EA /* Nimble */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2F19A92F29C9639D00CFC0EA /* XCRemoteSwiftPackageReference "Nimble" */;
-			productName = Nimble;
-		};
-		2F19A93329C9648700CFC0EA /* Quick */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2F19A93229C9648700CFC0EA /* XCRemoteSwiftPackageReference "Quick" */;
-			productName = Quick;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

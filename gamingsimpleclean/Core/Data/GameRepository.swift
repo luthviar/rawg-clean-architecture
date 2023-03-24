@@ -12,7 +12,7 @@ protocol GameRepositoryProtocol {
     func getGames() -> AnyPublisher<[GameModel], Error>
     
     func addToFavorite(game: GameModel) -> AnyPublisher<Bool, Error>
-    func deleteFavorite(gameToDelete: GameModel, currentGames: [GameModel]) -> AnyPublisher<[GameModel], Error>
+    func deleteFavorite(from game: GameModel) -> AnyPublisher<Bool, Error>
     func getFavorites() -> AnyPublisher<[GameModel], Error>
 }
 
@@ -35,17 +35,13 @@ final class GameRepository: NSObject {
 }
 
 extension GameRepository: GameRepositoryProtocol {
-    func addToFavorite(game: GameModel) -> AnyPublisher<Bool, Error> {
-        return self.locale.addToFavorite(game: GameMapper.mapGameModelToGameFavoriteEntity(input: game))
+    
+    func deleteFavorite(from game: GameModel) -> AnyPublisher<Bool, Error> {
+        return self.locale.deleteFavorite(from: GameMapper.mapGameModelToGameFavoriteEntity(input: game))
     }
     
-    func deleteFavorite(gameToDelete: GameModel, currentGames: [GameModel]) -> AnyPublisher<[GameModel], Error> {
-        return self.locale.deleteFavorite(gameToDelete: GameMapper.mapGameModelToGameFavoriteEntity(input: gameToDelete), currentGames: GameMapper.mapGameModelToGameFavoriteEntities(input: currentGames))
-            .flatMap { result -> AnyPublisher<[GameModel], Error> in
-                return self.locale.getFavorites()
-                    .map { GameMapper.mapFavoriteGameEntitiesToDomains(input: $0) }
-                    .eraseToAnyPublisher()
-            }.eraseToAnyPublisher()
+    func addToFavorite(game: GameModel) -> AnyPublisher<Bool, Error> {
+        return self.locale.addToFavorite(game: GameMapper.mapGameModelToGameFavoriteEntity(input: game))
     }
     
     func getFavorites() -> AnyPublisher<[GameModel], Error> {

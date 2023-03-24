@@ -11,11 +11,11 @@ import Combine
 protocol DetailUseCase {    
     func getGame() -> GameModel
     func addToFavorite(game: GameModel) -> AnyPublisher<Bool, Error>
-    func deleteFavorite(gameToDelete: GameModel, currentGames: [GameModel]) -> AnyPublisher<[GameModel], Error>
+    func deleteFavorite(from game: GameModel) -> AnyPublisher<Bool, Error>
 }
 
 class DetailInteractor: DetailUseCase {
-            
+    
     private let repository: GameRepositoryProtocol
     private let game: GameModel
     
@@ -35,7 +35,7 @@ class DetailInteractor: DetailUseCase {
         return repository.addToFavorite(game: game)
     }
     
-    func deleteFavorite(gameToDelete: GameModel, currentGames: [GameModel]) -> AnyPublisher<[GameModel], Error> {
-        return repository.deleteFavorite(gameToDelete: gameToDelete, currentGames: currentGames)
+    func deleteFavorite(from game: GameModel) -> AnyPublisher<Bool, Error> {
+        return repository.deleteFavorite(from: game)
     }
 }

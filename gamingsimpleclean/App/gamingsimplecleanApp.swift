@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct TheMealsAppApp: App {
+struct gamingsimplecleanApp: App {
   let homePresenter = HomePresenter(homeUseCase: Injection.init().provideHome())
 
   var body: some Scene {

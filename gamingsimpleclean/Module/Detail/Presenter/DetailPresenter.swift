@@ -17,9 +17,11 @@ class DetailPresenter: ObservableObject {
     @Published var errorMessage: String = ""
     @Published var loadingState: Bool = false
     @Published var isAddedToFavorite: Bool = false
+    @Published var isDeletedFromFavorite: Bool = false
+    @Published var isFavoriteMode: Bool = false
     
     init(detailUseCase: DetailUseCase) {
-        self.detailUseCase = detailUseCase
+        self.detailUseCase = detailUseCase        
         game = detailUseCase.getGame()
     }
     
@@ -35,6 +37,22 @@ class DetailPresenter: ObservableObject {
                 }
             }, receiveValue: { isAdded in
                 self.isAddedToFavorite = isAdded
+            })
+            .store(in: &cancellables)
+    }
+    
+    func deleteFromFavorite() {
+        detailUseCase.deleteFavorite(from: self.game)
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure:
+                    self.errorMessage = String(describing: completion)
+                case .finished:
+                    self.loadingState = false
+                }
+            }, receiveValue: { isDeleted in
+                self.isDeletedFromFavorite = isDeleted
             })
             .store(in: &cancellables)
     }

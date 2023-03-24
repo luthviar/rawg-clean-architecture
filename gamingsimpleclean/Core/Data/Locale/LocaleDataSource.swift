@@ -14,7 +14,7 @@ protocol LocaleDataSourceProtocol: AnyObject {
     func addGames(from games: [GameEntity]) -> AnyPublisher<Bool, Error>
     
     func addToFavorite(game: GameFavoriteEntity) -> AnyPublisher<Bool, Error>
-    func deleteFavorite(gameToDelete: GameFavoriteEntity, currentGames: [GameFavoriteEntity]) -> AnyPublisher<[GameFavoriteEntity], Error>
+    func deleteFavorite(from game: GameFavoriteEntity) -> AnyPublisher<Bool, Error>
     func getFavorites() -> AnyPublisher<[GameFavoriteEntity], Error>
 }
 
@@ -48,16 +48,17 @@ extension LocaleDataSource: LocaleDataSourceProtocol {
         }.eraseToAnyPublisher()
     }
     
-    func deleteFavorite(gameToDelete: GameFavoriteEntity, currentGames: [GameFavoriteEntity]) -> AnyPublisher<[GameFavoriteEntity], Error> {
-        return Future<[GameFavoriteEntity], Error> { completion in
-            if let realm = self.realm, let offsets = currentGames.firstIndex(of: gameToDelete), let index = IndexSet(integer: offsets).first {
+    func deleteFavorite(from game: GameFavoriteEntity) -> AnyPublisher<Bool, Error> {
+        return Future<Bool, Error> { completion in
+            if let realm = self.realm {
                 do {
                     try realm.write {
-                        var currentGamesEntity: [GameFavoriteEntity] = currentGames
-                        let game = currentGamesEntity[index]
-                        realm.delete(game)
-                        currentGamesEntity.remove(at: index)
-                        completion(.success(currentGamesEntity))
+                        if let gameToDelete = realm.object(ofType: GameFavoriteEntity.self, forPrimaryKey: game.id) {
+                            realm.delete(gameToDelete)
+                            completion(.success(true))
+                        } else {
+                            completion(.failure(DatabaseError.requestFailed))
+                        }
                     }
                 } catch {
                     completion(.failure(DatabaseError.requestFailed))
@@ -66,7 +67,7 @@ extension LocaleDataSource: LocaleDataSourceProtocol {
                 completion(.failure(DatabaseError.invalidInstance))
             }
         }.eraseToAnyPublisher()
-    }
+    }    
     
     func addToFavorite(game: GameFavoriteEntity) -> AnyPublisher<Bool, Error> {
         return Future<Bool, Error> { completion in
@@ -116,7 +117,7 @@ extension LocaleDataSource: LocaleDataSourceProtocol {
                 completion(.failure(DatabaseError.invalidInstance))
             }
         }.eraseToAnyPublisher()
-    }        
+    }
     
 }
 

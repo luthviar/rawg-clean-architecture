@@ -10,6 +10,7 @@ import CachedAsyncImage
 
 struct DetailView: View {
     @ObservedObject var presenter: DetailPresenter
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ZStack {
@@ -66,18 +67,36 @@ struct DetailView: View {
                             
                             
                             Button {
-                                self.presenter.addToFavorite()
-                            } label: {
-                                if self.presenter.isAddedToFavorite {
-                                    Text("Succeed Added To Favorite")
+                                if self.presenter.isFavoriteMode {
+                                    self.presenter.deleteFromFavorite()
                                 } else {
-                                    Text("Add To Favorite")
+                                    self.presenter.addToFavorite()
+                                }
+                            } label: {
+                                if self.presenter.isFavoriteMode {
+                                    if self.presenter.isDeletedFromFavorite {
+                                        Text("Succeed Deleted From Favorite")
+                                    } else {
+                                        Text("Delete From Favorite")
+                                    }
+                                } else {
+                                    if self.presenter.isAddedToFavorite {
+                                        Text("Succeed Added To Favorite")
+                                    } else {
+                                        Text("Add To Favorite")
+                                    }
                                 }
                             }
 
                         }
                                                 
                     }.padding()
+                }.onChange(of: self.presenter.isDeletedFromFavorite) { newValue in
+                    if newValue {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        })
+                    }
                 }
             }
         }.navigationBarTitle(Text(self.presenter.game.name), displayMode: .large)

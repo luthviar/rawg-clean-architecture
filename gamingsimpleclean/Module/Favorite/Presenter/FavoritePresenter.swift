@@ -11,7 +11,7 @@ import Combine
 class FavoritePresenter: ObservableObject {
     
     private var cancellables: Set<AnyCancellable> = []
-    private let router = HomeRouter()
+    private let router = FavoriteRouter()
     private let favUseCase: FavoriteUseCase
     
     @Published var favGames: [GameModel] = []
@@ -45,14 +45,6 @@ class FavoritePresenter: ObservableObject {
     ) -> some View {
         NavigationLink(
             destination: router.makeDetailView(for: game)
-        ) { content() }
-    }
-    
-    func linkBuilder<Content: View>(
-        @ViewBuilder content: () -> Content
-    ) -> some View {
-        NavigationLink(
-            destination: router.makeAboutView()
         ) { content() }
     }
     
