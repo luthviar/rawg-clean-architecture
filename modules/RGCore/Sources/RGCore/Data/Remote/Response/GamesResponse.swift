@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GamesResponse: Codable {
+struct GamesResponse: Decodable, Encodable {
     private enum CodingKeys: String, CodingKey {
         case count = "count"
         case next = "next"
@@ -31,7 +31,7 @@ struct GamesResponse: Codable {
     }
 }
 
-struct GameResponse: Codable {
+struct GameResponse: Decodable, Encodable {
     private enum CodingKeys: String, CodingKey {
         case id = "id"
         case slug = "slug"
@@ -82,7 +82,7 @@ struct GameResponse: Codable {
     }
 }
 
-struct GenresResponse: Codable {
+struct GenresResponse: Decodable, Encodable {
     private enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "name"

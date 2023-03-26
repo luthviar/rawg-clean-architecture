@@ -23,10 +23,7 @@
 		2F50A0BE29CD81DB00E67F95 /* RGCore in Frameworks */ = {isa = PBXBuildFile; productRef = 2F50A0BD29CD81DB00E67F95 /* RGCore */; };
 		2F76BE4829D00E76008CF4D6 /* AppInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F76BE4729D00E76008CF4D6 /* AppInjection.swift */; };
 		2F76BE4A29D0163A008CF4D6 /* RGCore in Frameworks */ = {isa = PBXBuildFile; productRef = 2F76BE4929D0163A008CF4D6 /* RGCore */; };
-		2F76BE5329D018A5008CF4D6 /* Mocker in Frameworks */ = {isa = PBXBuildFile; productRef = 2F76BE5229D018A5008CF4D6 /* Mocker */; };
 		2F76BE5529D018D7008CF4D6 /* Mocker in Frameworks */ = {isa = PBXBuildFile; productRef = 2F76BE5429D018D7008CF4D6 /* Mocker */; };
-		2F76BE5729D01C27008CF4D6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F76BE5629D01C27008CF4D6 /* XCTest.framework */; platformFilter = ios; };
-		2F76BE5829D01C64008CF4D6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F76BE5629D01C27008CF4D6 /* XCTest.framework */; };
 		2F76BE5C29D01D23008CF4D6 /* games.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F76BE5B29D01D23008CF4D6 /* games.json */; };
 		2FC28DD229CD8C9000A67E2E /* RGAbout in Frameworks */ = {isa = PBXBuildFile; productRef = 2FC28DD129CD8C9000A67E2E /* RGAbout */; };
 		2FC28DD529CD941C00A67E2E /* RGDetail in Frameworks */ = {isa = PBXBuildFile; productRef = 2FC28DD429CD941C00A67E2E /* RGDetail */; };
@@ -76,13 +73,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F76BE5829D01C64008CF4D6 /* XCTest.framework in Frameworks */,
 				2F50A0BE29CD81DB00E67F95 /* RGCore in Frameworks */,
 				2F19A90C29C8259A00CFC0EA /* RealmSwift in Frameworks */,
 				2F19A90F29C825A900CFC0EA /* CachedAsyncImage in Frameworks */,
 				2F1361EE29CD968600C34B79 /* RGFavorite in Frameworks */,
 				2FC28DD529CD941C00A67E2E /* RGDetail in Frameworks */,
-				2F76BE5329D018A5008CF4D6 /* Mocker in Frameworks */,
 				2FC28DD229CD8C9000A67E2E /* RGAbout in Frameworks */,
 				2F19A90A29C8259A00CFC0EA /* Realm in Frameworks */,
 				2F1361F229CD99D000C34B79 /* RGHome in Frameworks */,
@@ -94,7 +89,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F76BE5729D01C27008CF4D6 /* XCTest.framework in Frameworks */,
 				2F76BE4A29D0163A008CF4D6 /* RGCore in Frameworks */,
 				2F76BE5529D018D7008CF4D6 /* Mocker in Frameworks */,
 			);
@@ -241,7 +235,6 @@
 				2FC28DD429CD941C00A67E2E /* RGDetail */,
 				2F1361ED29CD968600C34B79 /* RGFavorite */,
 				2F1361F129CD99D000C34B79 /* RGHome */,
-				2F76BE5229D018A5008CF4D6 /* Mocker */,
 			);
 			productName = gamingsimpleclean;
 			productReference = 2F19A89B29C8222300CFC0EA /* gamingsimpleclean.app */;
@@ -323,8 +316,6 @@
 				2F19A90529C8254600CFC0EA /* XCRemoteSwiftPackageReference "Alamofire" */,
 				2F19A90829C8259A00CFC0EA /* XCRemoteSwiftPackageReference "realm-swift" */,
 				2F19A90D29C825A900CFC0EA /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
-				2F19A92F29C9639D00CFC0EA /* XCRemoteSwiftPackageReference "Nimble" */,
-				2F19A93229C9648700CFC0EA /* XCRemoteSwiftPackageReference "Quick" */,
 				2F76BE5129D018A5008CF4D6 /* XCRemoteSwiftPackageReference "Mocker" */,
 			);
 			productRefGroup = 2F19A89C29C8222300CFC0EA /* Products */;
@@ -505,7 +496,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -724,22 +715,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		2F19A92F29C9639D00CFC0EA /* XCRemoteSwiftPackageReference "Nimble" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Quick/Nimble.git";
-			requirement = {
-				kind = exactVersion;
-				version = 11.2.1;
-			};
-		};
-		2F19A93229C9648700CFC0EA /* XCRemoteSwiftPackageReference "Quick" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Quick/Quick.git";
-			requirement = {
-				kind = exactVersion;
-				version = 6.1.0;
-			};
-		};
 		2F76BE5129D018A5008CF4D6 /* XCRemoteSwiftPackageReference "Mocker" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WeTransfer/Mocker.git";
@@ -786,11 +761,6 @@
 		2F76BE4929D0163A008CF4D6 /* RGCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RGCore;
-		};
-		2F76BE5229D018A5008CF4D6 /* Mocker */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2F76BE5129D018A5008CF4D6 /* XCRemoteSwiftPackageReference "Mocker" */;
-			productName = Mocker;
 		};
 		2F76BE5429D018D7008CF4D6 /* Mocker */ = {
 			isa = XCSwiftPackageProductDependency;
