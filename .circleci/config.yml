@@ -17,7 +17,7 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
-      - run: xcodebuild clean build test -workspace gamingsimpleclean.xcodeproj/project.xcworkspace -scheme "gamingsimpleclean" -sdk iphonesimulator -destination "platform=iOS Simulator,OS=16.2,name=iPhone 14" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO      
+      - run: xcodebuild clean build test -workspace gamingsimpleclean.xcodeproj/project.xcworkspace -scheme "gamingsimpleclean" -sdk iphonesimulator -destination "platform=iOS Simulator,OS=16.1,name=iPhone 14" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO      
 
       # Collect XML test results data to show in the UI, and save the same XML
       # files under test-results folder in the Artifacts tab
