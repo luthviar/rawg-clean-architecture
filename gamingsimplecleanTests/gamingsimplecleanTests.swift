@@ -6,31 +6,62 @@
 //
 
 import XCTest
+import Alamofire
+@testable import Mocker
 @testable import gamingsimpleclean
+@testable import RGCore
 
 final class gamingsimplecleanTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    func testEndpointUrl() throws {
+        XCTAssertNotNil(Endpoints.Gets.games.url)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testRemoteData() throws {
+        let configuration = URLSessionConfiguration.af.default
+        configuration.protocolClasses = [MockingURLProtocol.self] + (configuration.protocolClasses ?? [])
+        let sessionManager = Session(configuration: configuration)
+        
+        let fakeApiKey = UUID().uuidString
+        let apiEndpoint = URL(string: "https://api.rawg.io/api/games?key=\(fakeApiKey)&page_size=50")!
+                
+        let bundle = Bundle(for: type(of: self))
+        guard let pathGamesJson = bundle.path(forResource: "games", ofType: "json") else {
+            XCTFail("Couldn't find file 'games.json' in test bundle.")
+            return
         }
+        let urlGamesJson = URL(fileURLWithPath: pathGamesJson)
+        let jsonData = try String(contentsOf: urlGamesJson).data(using: .utf8)
+        
+        let expectedData = try JSONDecoder().decode(GamesResponse.self, from: jsonData!)
+        let requestExpectation = expectation(description: "Request should finish")
+        
+        let mockedData = try! JSONEncoder().encode(expectedData)
+        let mock = Mock(url: apiEndpoint, dataType: .json, statusCode: 200, data: [.get: mockedData])
+        mock.register()
+        
+        sessionManager
+            .request(apiEndpoint)
+            .responseDecodable(of: GamesResponse.self) { (response) in
+                XCTAssertNotNil(response)
+                
+                switch response.result {
+                case .success(let data):
+                    XCTAssertNotNil(data)
+                    requestExpectation.fulfill()
+                case .failure(_):
+                    XCTFail("Failure in result!")
+                }
+            }.resume()
+        
+        wait(for: [requestExpectation], timeout: 10.0)
     }
+    
+    func testGameMapper() throws {
+        let response = GameResponse.fake()
+        let model = GameMapper.mapGameResponsesToDomains(input: [response])
 
+        XCTAssertEqual(response.id, model[0].id)
+    }
+    
 }

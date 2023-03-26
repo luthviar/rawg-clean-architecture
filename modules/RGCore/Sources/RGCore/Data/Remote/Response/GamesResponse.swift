@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GamesResponse: Decodable {
+struct GamesResponse: Codable {
     private enum CodingKeys: String, CodingKey {
         case count = "count"
         case next = "next"
@@ -20,9 +20,18 @@ struct GamesResponse: Decodable {
     let previous: String?
     let results: [GameResponse]
     let description: String?
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(count, forKey: .count)
+        try container.encode(next, forKey: .next)
+        try container.encode(previous, forKey: .previous)
+        try container.encode(results, forKey: .results)
+        try container.encode(description, forKey: .description)
+    }
 }
 
-struct GameResponse: Decodable {
+struct GameResponse: Codable {
     private enum CodingKeys: String, CodingKey {
         case id = "id"
         case slug = "slug"
@@ -53,9 +62,27 @@ struct GameResponse: Decodable {
     let saturatedColor: String?
     let dominantColor: String?
     let genres: [GenresResponse]?
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(slug, forKey: .slug)
+        try container.encode(name, forKey: .name)
+        try container.encode(released, forKey: .released)
+        try container.encode(backgroundImage, forKey: .backgroundImage)
+        try container.encode(rating, forKey: .rating)
+        try container.encode(ratingTop, forKey: .ratingTop)
+        try container.encode(ratingsCount, forKey: .ratingsCount)
+        try container.encode(reviewsTextCount, forKey: .reviewsTextCount)
+        try container.encode(updated, forKey: .updated)
+        try container.encode(reviewsCount, forKey: .reviewsCount)
+        try container.encode(saturatedColor, forKey: .saturatedColor)
+        try container.encode(dominantColor, forKey: .dominantColor)
+        try container.encode(genres, forKey: .genres)
+    }
 }
 
-struct GenresResponse: Decodable {
+struct GenresResponse: Codable {
     private enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "name"
@@ -70,3 +97,8 @@ struct GenresResponse: Decodable {
     let imageBackground: String?
 }
 
+extension GameResponse {
+    static func fake() -> Self {
+        return GameResponse(id: 0, slug: "", name: "", released: "", backgroundImage: "", rating: 0, ratingTop: 0, ratingsCount: 0, reviewsTextCount: 0, updated: "", reviewsCount: 0, saturatedColor: "", dominantColor: "", genres: [])
+    }
+}

@@ -22,6 +22,12 @@
 		2F19A90F29C825A900CFC0EA /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 2F19A90E29C825A900CFC0EA /* CachedAsyncImage */; };
 		2F50A0BE29CD81DB00E67F95 /* RGCore in Frameworks */ = {isa = PBXBuildFile; productRef = 2F50A0BD29CD81DB00E67F95 /* RGCore */; };
 		2F76BE4829D00E76008CF4D6 /* AppInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F76BE4729D00E76008CF4D6 /* AppInjection.swift */; };
+		2F76BE4A29D0163A008CF4D6 /* RGCore in Frameworks */ = {isa = PBXBuildFile; productRef = 2F76BE4929D0163A008CF4D6 /* RGCore */; };
+		2F76BE5329D018A5008CF4D6 /* Mocker in Frameworks */ = {isa = PBXBuildFile; productRef = 2F76BE5229D018A5008CF4D6 /* Mocker */; };
+		2F76BE5529D018D7008CF4D6 /* Mocker in Frameworks */ = {isa = PBXBuildFile; productRef = 2F76BE5429D018D7008CF4D6 /* Mocker */; };
+		2F76BE5729D01C27008CF4D6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F76BE5629D01C27008CF4D6 /* XCTest.framework */; platformFilter = ios; };
+		2F76BE5829D01C64008CF4D6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F76BE5629D01C27008CF4D6 /* XCTest.framework */; };
+		2F76BE5C29D01D23008CF4D6 /* games.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F76BE5B29D01D23008CF4D6 /* games.json */; };
 		2FC28DD229CD8C9000A67E2E /* RGAbout in Frameworks */ = {isa = PBXBuildFile; productRef = 2FC28DD129CD8C9000A67E2E /* RGAbout */; };
 		2FC28DD529CD941C00A67E2E /* RGDetail in Frameworks */ = {isa = PBXBuildFile; productRef = 2FC28DD429CD941C00A67E2E /* RGDetail */; };
 /* End PBXBuildFile section */
@@ -59,6 +65,8 @@
 		2F210E4E29CD8082004E0428 /* RGCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RGCore; path = modules/RGCore; sourceTree = "<group>"; };
 		2F50A0BF29CD8B5600E67F95 /* RGAbout */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RGAbout; path = modules/RGAbout; sourceTree = "<group>"; };
 		2F76BE4729D00E76008CF4D6 /* AppInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInjection.swift; sourceTree = "<group>"; };
+		2F76BE5629D01C27008CF4D6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		2F76BE5B29D01D23008CF4D6 /* games.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = games.json; sourceTree = "<group>"; };
 		2FC28DD329CD931C00A67E2E /* RGDetail */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RGDetail; path = modules/RGDetail; sourceTree = "<group>"; };
 		2FC28DD629CD962D00A67E2E /* RGFavorite */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RGFavorite; path = modules/RGFavorite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,11 +76,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F76BE5829D01C64008CF4D6 /* XCTest.framework in Frameworks */,
 				2F50A0BE29CD81DB00E67F95 /* RGCore in Frameworks */,
 				2F19A90C29C8259A00CFC0EA /* RealmSwift in Frameworks */,
 				2F19A90F29C825A900CFC0EA /* CachedAsyncImage in Frameworks */,
 				2F1361EE29CD968600C34B79 /* RGFavorite in Frameworks */,
 				2FC28DD529CD941C00A67E2E /* RGDetail in Frameworks */,
+				2F76BE5329D018A5008CF4D6 /* Mocker in Frameworks */,
 				2FC28DD229CD8C9000A67E2E /* RGAbout in Frameworks */,
 				2F19A90A29C8259A00CFC0EA /* Realm in Frameworks */,
 				2F1361F229CD99D000C34B79 /* RGHome in Frameworks */,
@@ -84,6 +94,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F76BE5729D01C27008CF4D6 /* XCTest.framework in Frameworks */,
+				2F76BE4A29D0163A008CF4D6 /* RGCore in Frameworks */,
+				2F76BE5529D018D7008CF4D6 /* Mocker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +154,7 @@
 		2F19A8AE29C8222500CFC0EA /* gamingsimplecleanTests */ = {
 			isa = PBXGroup;
 			children = (
+				2F76BE4C29D01801008CF4D6 /* Data */,
 				2F19A8AF29C8222500CFC0EA /* gamingsimplecleanTests.swift */,
 			);
 			path = gamingsimplecleanTests;
@@ -180,6 +194,7 @@
 		2F50A0BC29CD81DB00E67F95 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F76BE5629D01C27008CF4D6 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -190,6 +205,14 @@
 				2F76BE4729D00E76008CF4D6 /* AppInjection.swift */,
 			);
 			path = DI;
+			sourceTree = "<group>";
+		};
+		2F76BE4C29D01801008CF4D6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2F76BE5B29D01D23008CF4D6 /* games.json */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +241,7 @@
 				2FC28DD429CD941C00A67E2E /* RGDetail */,
 				2F1361ED29CD968600C34B79 /* RGFavorite */,
 				2F1361F129CD99D000C34B79 /* RGHome */,
+				2F76BE5229D018A5008CF4D6 /* Mocker */,
 			);
 			productName = gamingsimpleclean;
 			productReference = 2F19A89B29C8222300CFC0EA /* gamingsimpleclean.app */;
@@ -237,6 +261,10 @@
 				2F19A8AD29C8222500CFC0EA /* PBXTargetDependency */,
 			);
 			name = gamingsimplecleanTests;
+			packageProductDependencies = (
+				2F76BE4929D0163A008CF4D6 /* RGCore */,
+				2F76BE5429D018D7008CF4D6 /* Mocker */,
+			);
 			productName = gamingsimplecleanTests;
 			productReference = 2F19A8AB29C8222500CFC0EA /* gamingsimplecleanTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -297,6 +325,7 @@
 				2F19A90D29C825A900CFC0EA /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
 				2F19A92F29C9639D00CFC0EA /* XCRemoteSwiftPackageReference "Nimble" */,
 				2F19A93229C9648700CFC0EA /* XCRemoteSwiftPackageReference "Quick" */,
+				2F76BE5129D018A5008CF4D6 /* XCRemoteSwiftPackageReference "Mocker" */,
 			);
 			productRefGroup = 2F19A89C29C8222300CFC0EA /* Products */;
 			projectDirPath = "";
@@ -323,6 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F76BE5C29D01D23008CF4D6 /* games.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +505,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -709,6 +740,14 @@
 				version = 6.1.0;
 			};
 		};
+		2F76BE5129D018A5008CF4D6 /* XCRemoteSwiftPackageReference "Mocker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WeTransfer/Mocker.git";
+			requirement = {
+				kind = exactVersion;
+				version = 3.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -743,6 +782,20 @@
 		2F50A0BD29CD81DB00E67F95 /* RGCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RGCore;
+		};
+		2F76BE4929D0163A008CF4D6 /* RGCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RGCore;
+		};
+		2F76BE5229D018A5008CF4D6 /* Mocker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F76BE5129D018A5008CF4D6 /* XCRemoteSwiftPackageReference "Mocker" */;
+			productName = Mocker;
+		};
+		2F76BE5429D018D7008CF4D6 /* Mocker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F76BE5129D018A5008CF4D6 /* XCRemoteSwiftPackageReference "Mocker" */;
+			productName = Mocker;
 		};
 		2FC28DD129CD8C9000A67E2E /* RGAbout */ = {
 			isa = XCSwiftPackageProductDependency;
