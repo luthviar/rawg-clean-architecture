@@ -16,6 +16,7 @@ protocol LocaleDataSourceProtocol: AnyObject {
     func addToFavorite(game: GameFavoriteEntity) -> AnyPublisher<Bool, Error>
     func deleteFavorite(from game: GameFavoriteEntity) -> AnyPublisher<Bool, Error>
     func getFavorites() -> AnyPublisher<[GameFavoriteEntity], Error>
+    func isInFavorite(idGame: Int) -> AnyPublisher<Bool, Error>
 }
 
 final class LocaleDataSource: NSObject {
@@ -33,6 +34,16 @@ final class LocaleDataSource: NSObject {
 }
 
 extension LocaleDataSource: LocaleDataSourceProtocol {
+    
+    func isInFavorite(idGame: Int) -> AnyPublisher<Bool, Error> {
+        return Future<Bool, Error> { completion in
+            if let realm = self.realm {
+                completion(.success(realm.object(ofType: GameFavoriteEntity.self, forPrimaryKey: idGame) != nil))
+            } else {
+                completion(.success(false))
+            }
+        }.eraseToAnyPublisher()
+    }
     
     func getFavorites() -> AnyPublisher<[GameFavoriteEntity], Error> {
         return Future<[GameFavoriteEntity], Error> { completion in
