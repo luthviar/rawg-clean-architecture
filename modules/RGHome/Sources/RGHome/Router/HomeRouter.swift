@@ -14,7 +14,7 @@ import RGFavorite
 public class HomeRouter {
     
     public func makeDetailView(for game: GameModel) -> some View {
-        let detailUseCase = Injection.init().provideDetail(game: game)
+        let detailUseCase = CoreInjection.init().provideDetail(game: game)
         let presenter = DetailPresenter(detailUseCase: detailUseCase)
         return DetailView()
             .environmentObject(presenter)
@@ -25,7 +25,7 @@ public class HomeRouter {
     }
     
     public func makeFavoriteView() -> some View {
-        let favUseCase = Injection.init().provideFavorite()
+        let favUseCase = CoreInjection.init().provideFavorite()
         let presenter = FavoritePresenter(favUseCase: favUseCase)
         return FavoriteView()
             .environmentObject(presenter)

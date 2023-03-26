@@ -21,6 +21,7 @@
 		2F19A90C29C8259A00CFC0EA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F19A90B29C8259A00CFC0EA /* RealmSwift */; };
 		2F19A90F29C825A900CFC0EA /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 2F19A90E29C825A900CFC0EA /* CachedAsyncImage */; };
 		2F50A0BE29CD81DB00E67F95 /* RGCore in Frameworks */ = {isa = PBXBuildFile; productRef = 2F50A0BD29CD81DB00E67F95 /* RGCore */; };
+		2F76BE4829D00E76008CF4D6 /* AppInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F76BE4729D00E76008CF4D6 /* AppInjection.swift */; };
 		2FC28DD229CD8C9000A67E2E /* RGAbout in Frameworks */ = {isa = PBXBuildFile; productRef = 2FC28DD129CD8C9000A67E2E /* RGAbout */; };
 		2FC28DD529CD941C00A67E2E /* RGDetail in Frameworks */ = {isa = PBXBuildFile; productRef = 2FC28DD429CD941C00A67E2E /* RGDetail */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 		2F19A8BB29C8222500CFC0EA /* gamingsimplecleanUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gamingsimplecleanUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2F210E4E29CD8082004E0428 /* RGCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RGCore; path = modules/RGCore; sourceTree = "<group>"; };
 		2F50A0BF29CD8B5600E67F95 /* RGAbout */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RGAbout; path = modules/RGAbout; sourceTree = "<group>"; };
+		2F76BE4729D00E76008CF4D6 /* AppInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInjection.swift; sourceTree = "<group>"; };
 		2FC28DD329CD931C00A67E2E /* RGDetail */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RGDetail; path = modules/RGDetail; sourceTree = "<group>"; };
 		2FC28DD629CD962D00A67E2E /* RGFavorite */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RGFavorite; path = modules/RGFavorite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,6 +122,7 @@
 		2F19A89D29C8222300CFC0EA /* gamingsimpleclean */ = {
 			isa = PBXGroup;
 			children = (
+				2F76BE4629D00E6C008CF4D6 /* DI */,
 				2F19A90429C8249100CFC0EA /* App */,
 				2F19A8A229C8222500CFC0EA /* Assets.xcassets */,
 				2F19A8A429C8222500CFC0EA /* Preview Content */,
@@ -179,6 +182,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2F76BE4629D00E6C008CF4D6 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				2F76BE4729D00E76008CF4D6 /* AppInjection.swift */,
+			);
+			path = DI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F19A8A129C8222300CFC0EA /* ContentView.swift in Sources */,
+				2F76BE4829D00E76008CF4D6 /* AppInjection.swift in Sources */,
 				2F19A89F29C8222300CFC0EA /* gamingsimplecleanApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

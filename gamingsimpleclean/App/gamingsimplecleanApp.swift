@@ -6,17 +6,16 @@
 //
 
 import SwiftUI
-import RGCore
 import RGHome
 
 @main
 struct gamingsimplecleanApp: App {
-  let homePresenter = HomePresenter(homeUseCase: Injection.init().provideHome())
-
-  var body: some Scene {
-    WindowGroup {
-      ContentView()
-        .environmentObject(homePresenter)
+    var body: some Scene {
+        let injection = AppInjection.init()
+        let homePresenter = HomePresenter(homeUseCase: injection.provideHome())
+        WindowGroup {
+            ContentView()
+                .environmentObject(homePresenter)
+        }
     }
-  }
 }

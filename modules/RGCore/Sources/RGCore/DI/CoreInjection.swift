@@ -1,5 +1,5 @@
 //
-//  Injection.swift
+//  CoreInjection.swift
 //  gamingsimpleclean
 //
 //  Created by Luthfi Abdurrahim on 20/03/23.
@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-public final class Injection: NSObject {
+public final class CoreInjection: NSObject {
     
     public func provideRepository() -> GameRepositoryProtocol {
         let realm = try? Realm()
