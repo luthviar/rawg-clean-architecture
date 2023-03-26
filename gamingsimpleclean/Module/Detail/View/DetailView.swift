@@ -40,7 +40,7 @@ struct DetailView: View {
                         
                         Text("\(self.presenter.game.genres)")
                             .font(.system(size: 15))
-                                                
+                        
                         Spacer()
                         
                         Group {
@@ -65,38 +65,42 @@ struct DetailView: View {
                                 Text("Total Reviews: \(self.presenter.game.reviewsCount)")
                             }
                             
-                            
-                            Button {
-                                if self.presenter.isFavoriteMode {
-                                    self.presenter.deleteFromFavorite()
+                            if self.presenter.isInFavorite && !self.presenter.isFavoriteMode {
+                                Text("Has Been Added To Favorite")
+                                    .padding(.top, 20)
+                            } else {
+                                if self.presenter.isDeletedFromFavorite && self.presenter.isFavoriteMode {
+                                    Text("Succeed Deleted From Favorite")
+                                        .padding(.top, 20)
                                 } else {
-                                    self.presenter.addToFavorite()
-                                }
-                            } label: {
-                                if self.presenter.isFavoriteMode {
-                                    if self.presenter.isDeletedFromFavorite {
-                                        Text("Succeed Deleted From Favorite")
-                                    } else {
-                                        Text("Delete From Favorite")
+                                    Button {
+                                        if self.presenter.isFavoriteMode {
+                                            self.presenter.deleteFromFavorite()
+                                        } else {
+                                            self.presenter.addToFavorite()
+                                        }
+                                    } label: {
+                                        if self.presenter.isFavoriteMode {
+                                            Text("Delete From Favorite")
+                                        } else {
+                                            Text("Add To Favorite")
+                                        }
                                     }
-                                } else {
-                                    if self.presenter.isAddedToFavorite {
-                                        Text("Succeed Added To Favorite")
-                                    } else {
-                                        Text("Add To Favorite")
-                                    }
+                                    .padding(.top, 20)
                                 }
                             }
-
                         }
-                                                
+                        
                     }.padding()
                 }.onChange(of: self.presenter.isDeletedFromFavorite) { newValue in
                     if newValue {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                             self.presentationMode.wrappedValue.dismiss()
                         })
                     }
+                }
+                .onAppear {
+                    self.presenter.checkIsInFavorite()
                 }
             }
         }.navigationBarTitle(Text(self.presenter.game.name), displayMode: .large)

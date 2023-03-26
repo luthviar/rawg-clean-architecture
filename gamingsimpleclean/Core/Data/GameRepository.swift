@@ -14,6 +14,7 @@ protocol GameRepositoryProtocol {
     func addToFavorite(game: GameModel) -> AnyPublisher<Bool, Error>
     func deleteFavorite(from game: GameModel) -> AnyPublisher<Bool, Error>
     func getFavorites() -> AnyPublisher<[GameModel], Error>
+    func isInFavorite(idGame: Int) -> AnyPublisher<Bool, Error>
 }
 
 final class GameRepository: NSObject {
@@ -35,6 +36,10 @@ final class GameRepository: NSObject {
 }
 
 extension GameRepository: GameRepositoryProtocol {
+    
+    func isInFavorite(idGame: Int) -> AnyPublisher<Bool, Error> {
+        return self.locale.isInFavorite(idGame: idGame)
+    }    
     
     func deleteFavorite(from game: GameModel) -> AnyPublisher<Bool, Error> {
         return self.locale.deleteFavorite(from: GameMapper.mapGameModelToGameFavoriteEntity(input: game))

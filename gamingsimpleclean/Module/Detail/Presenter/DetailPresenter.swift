@@ -15,10 +15,10 @@ class DetailPresenter: ObservableObject {
     
     @Published var game: GameModel
     @Published var errorMessage: String = ""
-    @Published var loadingState: Bool = false
-    @Published var isAddedToFavorite: Bool = false
+    @Published var loadingState: Bool = false    
     @Published var isDeletedFromFavorite: Bool = false
     @Published var isFavoriteMode: Bool = false
+    @Published var isInFavorite: Bool = false
     
     init(detailUseCase: DetailUseCase) {
         self.detailUseCase = detailUseCase        
@@ -34,10 +34,9 @@ class DetailPresenter: ObservableObject {
                     self.errorMessage = String(describing: completion)
                 case .finished:
                     self.loadingState = false
+                    self.checkIsInFavorite()
                 }
-            }, receiveValue: { isAdded in
-                self.isAddedToFavorite = isAdded
-            })
+            }, receiveValue: { _ in })
             .store(in: &cancellables)
     }
     
@@ -50,9 +49,26 @@ class DetailPresenter: ObservableObject {
                     self.errorMessage = String(describing: completion)
                 case .finished:
                     self.loadingState = false
+                    self.checkIsInFavorite()
                 }
             }, receiveValue: { isDeleted in
                 self.isDeletedFromFavorite = isDeleted
+            })
+            .store(in: &cancellables)
+    }
+    
+    func checkIsInFavorite() {
+        detailUseCase.isInFavorite(idGame: self.game.id)
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure:
+                    self.errorMessage = String(describing: completion)
+                case .finished:
+                    self.loadingState = false
+                }
+            }, receiveValue: { isFavorited in
+                self.isInFavorite = isFavorited
             })
             .store(in: &cancellables)
     }
